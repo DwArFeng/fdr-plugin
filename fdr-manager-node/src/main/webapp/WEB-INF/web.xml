@@ -3,7 +3,7 @@
          version="3.0">
 
     <!--定义了WEB应用的名字-->
-    <display-name>egoffice-web</display-name>
+    <display-name>fdr-manager-web</display-name>
 
     <!-- 配置Listener参数：告诉它Spring的配置文件位置，它好去创建容器 -->
     <context-param>

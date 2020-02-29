@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 解析controller包下的注解 -->
-    <context:component-scan base-package="com.jneagle.egoffice.node.controller"/>
+    <context:component-scan base-package="com.dwarfeng.fdrmanager.node.controller"/>
 
     <!--静态资源映射-->
     <!--本项目把静态资源放在了WEB-INF的statics目录下，资源映射如下-->
