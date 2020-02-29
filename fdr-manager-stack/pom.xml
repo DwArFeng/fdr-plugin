@@ -28,5 +28,10 @@
             <groupId>com.dwarfeng</groupId>
             <artifactId>subgrade-stack</artifactId>
         </dependency>
+        <!-- fdr组件 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>fdr-stack</artifactId>
+        </dependency>
     </dependencies>
 </project>
