@@ -62,6 +62,20 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
         </dependency>
+        <!-- SnowFlake服务 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>snowflake-distributed-service-api</artifactId>
+        </dependency>
+        <!-- fdr组件 -->
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>fdr-stack</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dwarfeng</groupId>
+            <artifactId>fdr-sdk</artifactId>
+        </dependency>
         <!-- subgrade组件 -->
         <dependency>
             <groupId>com.dwarfeng</groupId>
