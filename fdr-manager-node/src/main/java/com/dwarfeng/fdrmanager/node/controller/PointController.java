@@ -8,9 +8,10 @@ import com.dwarfeng.subgrade.sdk.bean.dto.FastJsonResponseData;
 import com.dwarfeng.subgrade.sdk.bean.dto.JSFixedFastJsonPagedData;
 import com.dwarfeng.subgrade.sdk.bean.dto.PagingUtil;
 import com.dwarfeng.subgrade.sdk.bean.dto.ResponseDataUtil;
-import com.dwarfeng.subgrade.sdk.bean.key.FastJsonLongIdKey;
+import com.dwarfeng.subgrade.sdk.bean.key.JSFixedFastJsonLongIdKey;
 import com.dwarfeng.subgrade.sdk.interceptor.analyse.BehaviorAnalyse;
 import com.dwarfeng.subgrade.sdk.interceptor.http.BindingCheck;
+import com.dwarfeng.subgrade.sdk.validation.group.Insert;
 import com.dwarfeng.subgrade.stack.bean.BeanTransformer;
 import com.dwarfeng.subgrade.stack.bean.dto.PagedData;
 import com.dwarfeng.subgrade.stack.bean.dto.PagingInfo;
@@ -53,17 +54,28 @@ public class PointController {
         }
     }
 
+    @GetMapping("")
+    @BehaviorAnalyse
+    public FastJsonResponseData<JSFixedFastJsonPoint> get(HttpServletRequest request, @RequestParam("key") @NotNull long key) {
+        try {
+            Point point = service.get(new LongIdKey(key));
+            return FastJsonResponseData.of(ResponseDataUtil.good(JSFixedFastJsonPoint.of(point)));
+        } catch (Exception e) {
+            return FastJsonResponseData.of(ResponseDataUtil.bad(JSFixedFastJsonPoint.class, e, sem));
+        }
+    }
+
     @PostMapping("")
     @BehaviorAnalyse
     @BindingCheck
-    public FastJsonResponseData<FastJsonLongIdKey> insert(
+    public FastJsonResponseData<JSFixedFastJsonLongIdKey> insert(
             HttpServletRequest request,
-            @RequestBody @Validated WebInputPoint point, BindingResult bindingResult) {
+            @RequestBody @Validated(Insert.class) WebInputPoint point, BindingResult bindingResult) {
         try {
-            LongIdKey insert = service.insert(point.toStackBean());
-            return FastJsonResponseData.of(ResponseDataUtil.good(FastJsonLongIdKey.of(insert)));
+            LongIdKey insert = service.insert(WebInputPoint.toStackBean(point));
+            return FastJsonResponseData.of(ResponseDataUtil.good(JSFixedFastJsonLongIdKey.of(insert)));
         } catch (Exception e) {
-            return FastJsonResponseData.of(ResponseDataUtil.bad(FastJsonLongIdKey.class, e, sem));
+            return FastJsonResponseData.of(ResponseDataUtil.bad(JSFixedFastJsonLongIdKey.class, e, sem));
         }
     }
 
@@ -74,7 +86,7 @@ public class PointController {
             HttpServletRequest request,
             @RequestBody @Validated WebInputPoint point, BindingResult bindingResult) {
         try {
-            service.update(point.toStackBean());
+            service.update(WebInputPoint.toStackBean(point));
             return FastJsonResponseData.of(ResponseDataUtil.good(null));
         } catch (Exception e) {
             return FastJsonResponseData.of(ResponseDataUtil.bad(Object.class, e, sem));
@@ -98,6 +110,20 @@ public class PointController {
             HttpServletRequest request, @RequestParam("page") int page, @RequestParam("rows") int rows) {
         try {
             PagedData<Point> all = service.all(new PagingInfo(page, rows));
+            PagedData<JSFixedFastJsonPoint> transform = PagingUtil.transform(all, beanTransformer);
+            return FastJsonResponseData.of(ResponseDataUtil.good(JSFixedFastJsonPagedData.of(transform)));
+        } catch (Exception e) {
+            return FastJsonResponseData.of(ResponseDataUtil.bad(JSFixedFastJsonPagedData.class, e, sem));
+        }
+    }
+
+    @GetMapping("/name-like")
+    @BehaviorAnalyse
+    public FastJsonResponseData<JSFixedFastJsonPagedData<JSFixedFastJsonPoint>> nameLike(
+            HttpServletRequest request,
+            @RequestParam("name") String name, @RequestParam("page") int page, @RequestParam("rows") int rows) {
+        try {
+            PagedData<Point> all = service.nameLike(name, new PagingInfo(page, rows));
             PagedData<JSFixedFastJsonPoint> transform = PagingUtil.transform(all, beanTransformer);
             return FastJsonResponseData.of(ResponseDataUtil.good(JSFixedFastJsonPagedData.of(transform)));
         } catch (Exception e) {

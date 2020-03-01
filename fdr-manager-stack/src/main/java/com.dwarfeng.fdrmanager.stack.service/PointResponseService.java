@@ -16,33 +16,42 @@ import com.dwarfeng.subgrade.stack.service.Service;
 public interface PointResponseService extends Service {
 
     /**
-     * 获取服务中是否有指定的权限。
+     * 获取服务中是否有指定的数据点。
      *
-     * @param key 指定的权限的键。
-     * @return 服务中是否有指定的权限。
+     * @param key 指定的数据点的键。
+     * @return 服务中是否有指定的数据点。
      * @throws ServiceException 服务异常。
      */
     boolean exists(LongIdKey key) throws ServiceException;
 
     /**
-     * 向服务中插入指定的权限。
+     * 获取服务中指定的主键对应的数据点。
      *
-     * @param point 指定的权限。
+     * @param key 指定的主键。
+     * @return 指定的主键对应的数据点。
+     * @throws ServiceException 服务异常。
+     */
+    Point get(LongIdKey key) throws ServiceException;
+
+    /**
+     * 向服务中插入指定的数据点。
+     *
+     * @param point 指定的数据点。
      * @return 插入后分配的新主键。
      * @throws ServiceException 服务异常。
      */
     LongIdKey insert(Point point) throws ServiceException;
 
     /**
-     * 向服务中更新指定的权限。
+     * 向服务中更新指定的数据点。
      *
-     * @param point 指定的权限。
+     * @param point 指定的数据点。
      * @throws ServiceException 服务异常。
      */
     void update(Point point) throws ServiceException;
 
     /**
-     * 从服务中删除指定的主键对应的权限。
+     * 从服务中删除指定的主键对应的数据点。
      *
      * @param key 指定的主键。
      * @throws ServiceException 服务异常。
@@ -50,11 +59,21 @@ public interface PointResponseService extends Service {
     void delete(LongIdKey key) throws ServiceException;
 
     /**
-     * 获取所有权限。
+     * 获取所有数据点。
      *
      * @param pagingInfo 分页信息。
-     * @return 所有权限构成的分页数据。
+     * @return 所有数据点构成的分页数据。
      * @throws ServiceException 服务异常。
      */
     PagedData<Point> all(PagingInfo pagingInfo) throws ServiceException;
+
+    /**
+     * 获取具有匹配名称的数据点。
+     *
+     * @param nameLike   匹配的名称。
+     * @param pagingInfo 分页信息。
+     * @return 所有符合要求的数据点构成的分页数据。
+     * @throws ServiceException 服务异常。
+     */
+    PagedData<Point> nameLike(String nameLike, PagingInfo pagingInfo) throws ServiceException;
 }

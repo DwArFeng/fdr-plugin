@@ -25,6 +25,11 @@ public class PointResponseServiceImpl implements PointResponseService {
     }
 
     @Override
+    public Point get(LongIdKey key) throws ServiceException {
+        return service.get(key);
+    }
+
+    @Override
     public LongIdKey insert(Point point) throws ServiceException {
         return service.insert(point);
     }
@@ -42,5 +47,10 @@ public class PointResponseServiceImpl implements PointResponseService {
     @Override
     public PagedData<Point> all(PagingInfo pagingInfo) throws ServiceException {
         return service.lookup(pagingInfo);
+    }
+
+    @Override
+    public PagedData<Point> nameLike(String nameLike, PagingInfo pagingInfo) throws ServiceException {
+        return service.lookup(PointMaintainService.NAME_LIKE, new Object[]{nameLike}, pagingInfo);
     }
 }
