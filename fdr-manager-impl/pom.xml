@@ -89,33 +89,6 @@
             <groupId>com.dwarfeng</groupId>
             <artifactId>subgrade-impl</artifactId>
         </dependency>
-        <!-- acckeeper组件 -->
-        <dependency>
-            <groupId>com.dwarfeng</groupId>
-            <artifactId>account-keeper-stack</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.dwarfeng</groupId>
-            <artifactId>account-keeper-sdk</artifactId>
-        </dependency>
-        <!-- rabcwr组件 -->
-        <dependency>
-            <groupId>com.dwarfeng</groupId>
-            <artifactId>rabc-weapon-rack-stack</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.dwarfeng</groupId>
-            <artifactId>rabc-weapon-rack-sdk</artifactId>
-        </dependency>
-        <!-- prorepo组件 -->
-        <dependency>
-            <groupId>com.dwarfeng</groupId>
-            <artifactId>profile-repository-stack</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.dwarfeng</groupId>
-            <artifactId>profile-repository-sdk</artifactId>
-        </dependency>
         <!-- 程序自身组件 -->
         <dependency>
             <groupId>com.dwarfeng</groupId>

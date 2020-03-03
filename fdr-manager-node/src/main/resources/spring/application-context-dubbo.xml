@@ -21,5 +21,10 @@
     <!-- 向注册中心注册暴露服务地址,注册消费者服务 -->
     <dubbo:reference id="pointMaintainService" interface="com.dwarfeng.fdr.stack.service.PointMaintainService"
                      retries="3" timeout="1000"/>
+    <dubbo:reference id="filterInfoMaintainService" interface="com.dwarfeng.fdr.stack.service.FilterInfoMaintainService"
+                     retries="3" timeout="1000"/>
+    <dubbo:reference id="triggerInfoMaintainService"
+                     interface="com.dwarfeng.fdr.stack.service.TriggerInfoMaintainService"
+                     retries="3" timeout="1000"/>
     <dubbo:reference id="longIdService" interface="com.dwarfeng.sfds.stack.service.LongIdService"/>
 </beans>
