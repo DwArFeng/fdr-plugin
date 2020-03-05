@@ -1,11 +1,7 @@
 package com.dwarfeng.fdrmanager.node.configuration;
 
-import com.dwarfeng.fdr.sdk.bean.entity.JSFixedFastJsonFilterInfo;
-import com.dwarfeng.fdr.sdk.bean.entity.JSFixedFastJsonPoint;
-import com.dwarfeng.fdr.sdk.bean.entity.JSFixedFastJsonTriggerInfo;
-import com.dwarfeng.fdr.stack.bean.entity.FilterInfo;
-import com.dwarfeng.fdr.stack.bean.entity.Point;
-import com.dwarfeng.fdr.stack.bean.entity.TriggerInfo;
+import com.dwarfeng.fdr.sdk.bean.entity.*;
+import com.dwarfeng.fdr.stack.bean.entity.*;
 import com.dwarfeng.subgrade.impl.bean.DozerBeanTransformer;
 import com.dwarfeng.subgrade.stack.bean.BeanTransformer;
 import org.dozer.Mapper;
@@ -32,5 +28,15 @@ public class BeanTransformerConfiguration {
     @Bean
     public BeanTransformer<TriggerInfo, JSFixedFastJsonTriggerInfo> triggerInfoJSFixedFastJsonTriggerInfoBeanTransformer() {
         return new DozerBeanTransformer<>(TriggerInfo.class, JSFixedFastJsonTriggerInfo.class, mapper);
+    }
+
+    @Bean
+    public BeanTransformer<FilterSupport, FastJsonFilterSupport> filterSupportFastJsonFilterSupportBeanTransformer() {
+        return new DozerBeanTransformer<>(FilterSupport.class, FastJsonFilterSupport.class, mapper);
+    }
+
+    @Bean
+    public BeanTransformer<TriggerSupport, FastJsonTriggerSupport> triggerSupportFastJsonTriggerSupportBeanTransformer() {
+        return new DozerBeanTransformer<>(TriggerSupport.class, FastJsonTriggerSupport.class, mapper);
     }
 }

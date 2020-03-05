@@ -6,7 +6,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="fdr-manager-test">
+    <dubbo:application name="fdr-manager-node">
         <dubbo:parameter key="qos.enable" value="true"/>
         <dubbo:parameter key="qos.accept.foreign.ip" value="false"/>
         <dubbo:parameter key="qos.port" value="${dubbo.qos.port}"/>
@@ -26,5 +26,11 @@
     <dubbo:reference id="triggerInfoMaintainService"
                      interface="com.dwarfeng.fdr.stack.service.TriggerInfoMaintainService"
                      retries="3" timeout="1000"/>
+    <dubbo:reference id="filterSupportMaintainService"
+                     interface="com.dwarfeng.fdr.stack.service.FilterSupportMaintainService" retries="3"
+                     timeout="1000"/>
+    <dubbo:reference id="triggerSupportMaintainService"
+                     interface="com.dwarfeng.fdr.stack.service.TriggerSupportMaintainService" retries="3"
+                     timeout="1000"/>
     <dubbo:reference id="longIdService" interface="com.dwarfeng.sfds.stack.service.LongIdService"/>
 </beans>
