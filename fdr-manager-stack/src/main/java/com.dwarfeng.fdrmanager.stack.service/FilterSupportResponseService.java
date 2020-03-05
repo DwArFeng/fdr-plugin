@@ -59,6 +59,15 @@ public interface FilterSupportResponseService extends Service {
     void delete(StringIdKey key) throws ServiceException;
 
     /**
+     * 获取所有过滤器支持。
+     *
+     * @param pagingInfo 分页信息。
+     * @return 所有过滤器支持构成的分页数据。
+     * @throws ServiceException 服务异常。
+     */
+    PagedData<FilterSupport> all(PagingInfo pagingInfo) throws ServiceException;
+
+    /**
      * 查找id匹配指定文本的所有过滤器支持。
      *
      * @param pattern    指定的匹配文本。

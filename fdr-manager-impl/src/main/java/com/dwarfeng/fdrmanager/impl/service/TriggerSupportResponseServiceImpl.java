@@ -45,6 +45,11 @@ public class TriggerSupportResponseServiceImpl implements TriggerSupportResponse
     }
 
     @Override
+    public PagedData<TriggerSupport> all(PagingInfo pagingInfo) throws ServiceException {
+        return service.lookup(pagingInfo);
+    }
+
+    @Override
     public PagedData<TriggerSupport> idLike(String pattern, PagingInfo pagingInfo) throws ServiceException {
         return service.lookup(TriggerSupportMaintainService.ID_LIKE, new Object[]{pattern}, pagingInfo);
     }

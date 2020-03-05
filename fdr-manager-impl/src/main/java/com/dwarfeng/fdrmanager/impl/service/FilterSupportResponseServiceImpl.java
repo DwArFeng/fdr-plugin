@@ -45,6 +45,11 @@ public class FilterSupportResponseServiceImpl implements FilterSupportResponseSe
     }
 
     @Override
+    public PagedData<FilterSupport> all(PagingInfo pagingInfo) throws ServiceException {
+        return service.lookup(pagingInfo);
+    }
+
+    @Override
     public PagedData<FilterSupport> idLike(String pattern, PagingInfo pagingInfo) throws ServiceException {
         return service.lookup(FilterSupportMaintainService.ID_LIKE, new Object[]{pattern}, pagingInfo);
     }

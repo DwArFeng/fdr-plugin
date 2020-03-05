@@ -104,6 +104,19 @@ public class TriggerSupportController {
         }
     }
 
+    @GetMapping("/all")
+    @BehaviorAnalyse
+    public FastJsonResponseData<JSFixedFastJsonPagedData<FastJsonTriggerSupport>> all(
+            HttpServletRequest request, @RequestParam("page") int page, @RequestParam("rows") int rows) {
+        try {
+            PagedData<TriggerSupport> all = service.all(new PagingInfo(page, rows));
+            PagedData<FastJsonTriggerSupport> transform = PagingUtil.transform(all, beanTransformer);
+            return FastJsonResponseData.of(ResponseDataUtil.good(JSFixedFastJsonPagedData.of(transform)));
+        } catch (Exception e) {
+            return FastJsonResponseData.of(ResponseDataUtil.bad(JSFixedFastJsonPagedData.class, e, sem));
+        }
+    }
+
     @GetMapping("/id-like")
     @BehaviorAnalyse
     public FastJsonResponseData<JSFixedFastJsonPagedData<FastJsonTriggerSupport>> idLike(
