@@ -20,6 +20,14 @@ const routes = [
         path: 'point',
         component: () => import('../views/point/Point'),
       },
+      {
+        path: 'filter-support',
+        component: () => import('../views/filterSupport/FilterSupport'),
+      },
+      {
+        path: 'trigger-support',
+        component: () => import('../views/triggerSupport/TriggerSupport'),
+      },
     ],
   },
 ];

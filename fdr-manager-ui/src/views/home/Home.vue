@@ -65,6 +65,27 @@
               </template>
             </el-menu-item>
           </el-submenu>
+          <!-- 数据支持 -->
+          <el-submenu index="data_support">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>数据支持</span>
+            </template>
+            <!-- 过滤器支持 -->
+            <el-menu-item index="/home/filter-support">
+              <template slot="title">
+                <i class="el-icon-s-grid"></i>
+                <span>过滤器支持</span>
+              </template>
+            </el-menu-item>
+            <!-- 触发器支持 -->
+            <el-menu-item index="/home/trigger-support">
+              <template slot="title">
+                <i class="el-icon-s-grid"></i>
+                <span>触发器支持</span>
+              </template>
+            </el-menu-item>
+          </el-submenu>
           <!-- 数据查询 -->
           <el-submenu index="data_inspection">
             <template slot="title">
