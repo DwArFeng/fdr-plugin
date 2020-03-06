@@ -399,6 +399,8 @@ export default {
       })
         .then(() => remove(key))
         .catch(() => {
+          console.log('123456789');
+          return Promise.reject(new Error('canceled'));
         })
         .then((res) => {
           if (res.meta.code !== 0) {
@@ -418,6 +420,10 @@ export default {
           return null;
         })
         .catch((err) => {
+          console.log(err);
+          if (err.message === 'canceled') {
+            return null;
+          }
           console.log(err);
           this.$message({
             showClose: true,

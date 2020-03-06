@@ -23,14 +23,14 @@
               </template>
             </el-menu-item>
             <!-- 过滤器管理 -->
-            <el-menu-item index="/home/point">
+            <el-menu-item index="/home/filter-info">
               <template slot="title">
                 <i class="el-icon-s-grid"></i>
                 <span>过滤器管理</span>
               </template>
             </el-menu-item>
             <!-- 触发器管理 -->
-            <el-menu-item index="/home/point">
+            <el-menu-item index="/home/trigger-info">
               <template slot="title">
                 <i class="el-icon-s-grid"></i>
                 <span>触发器管理</span>

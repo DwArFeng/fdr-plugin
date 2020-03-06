@@ -28,6 +28,14 @@ const routes = [
         path: 'trigger-support',
         component: () => import('../views/triggerSupport/TriggerSupport'),
       },
+      {
+        path: 'filter-info',
+        component: () => import('../views/filterInfo/FilterInfo'),
+      },
+      {
+        path: 'trigger-info',
+        component: () => import('../views/triggerInfo/TriggerInfo'),
+      },
     ],
   },
 ];
