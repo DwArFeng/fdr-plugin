@@ -45,6 +45,11 @@ public class TriggerInfoResponseServiceImpl implements TriggerInfoResponseServic
     }
 
     @Override
+    public PagedData<TriggerInfo> all(PagingInfo pagingInfo) throws ServiceException {
+        return service.lookup(pagingInfo);
+    }
+
+    @Override
     public PagedData<TriggerInfo> childForPoint(LongIdKey pointKey, PagingInfo pagingInfo) throws ServiceException {
         return service.lookup(TriggerInfoMaintainService.CHILD_FOR_POINT, new Object[]{pointKey}, pagingInfo);
     }

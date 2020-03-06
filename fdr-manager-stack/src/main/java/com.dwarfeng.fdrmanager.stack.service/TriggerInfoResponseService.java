@@ -59,6 +59,15 @@ public interface TriggerInfoResponseService extends Service {
     void delete(LongIdKey key) throws ServiceException;
 
     /**
+     * 从服务中获取所有的触发器信息。
+     *
+     * @param pagingInfo 分页信息。
+     * @return 指定的数据点对应的触发器信息。
+     * @throws ServiceException 服务异常。
+     */
+    PagedData<TriggerInfo> all(PagingInfo pagingInfo) throws ServiceException;
+
+    /**
      * 从服务中获取指定数据点对应的所有触发器信息。
      *
      * @param pointKey   指定的数据点对应的主键。

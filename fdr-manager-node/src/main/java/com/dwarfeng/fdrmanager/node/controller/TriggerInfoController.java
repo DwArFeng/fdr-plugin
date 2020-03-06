@@ -104,6 +104,19 @@ public class TriggerInfoController {
         }
     }
 
+    @GetMapping("/all")
+    @BehaviorAnalyse
+    public FastJsonResponseData<JSFixedFastJsonPagedData<JSFixedFastJsonTriggerInfo>> all(
+            HttpServletRequest request, @RequestParam("page") int page, @RequestParam("rows") int rows) {
+        try {
+            PagedData<TriggerInfo> all = service.all(new PagingInfo(page, rows));
+            PagedData<JSFixedFastJsonTriggerInfo> transform = PagingUtil.transform(all, beanTransformer);
+            return FastJsonResponseData.of(ResponseDataUtil.good(JSFixedFastJsonPagedData.of(transform)));
+        } catch (Exception e) {
+            return FastJsonResponseData.of(ResponseDataUtil.bad(JSFixedFastJsonPagedData.class, e, sem));
+        }
+    }
+
     @GetMapping("/child-for-point")
     @BehaviorAnalyse
     public FastJsonResponseData<JSFixedFastJsonPagedData<JSFixedFastJsonTriggerInfo>> childForPoint(

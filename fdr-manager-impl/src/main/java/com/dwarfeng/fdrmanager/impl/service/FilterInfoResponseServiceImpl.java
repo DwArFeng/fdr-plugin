@@ -45,6 +45,11 @@ public class FilterInfoResponseServiceImpl implements FilterInfoResponseService 
     }
 
     @Override
+    public PagedData<FilterInfo> all(PagingInfo pagingInfo) throws ServiceException {
+        return service.lookup(pagingInfo);
+    }
+
+    @Override
     public PagedData<FilterInfo> childForPoint(LongIdKey pointKey, PagingInfo pagingInfo) throws ServiceException {
         return service.lookup(FilterInfoMaintainService.CHILD_FOR_POINT, new Object[]{pointKey}, pagingInfo);
     }

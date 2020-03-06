@@ -59,6 +59,15 @@ public interface FilterInfoResponseService extends Service {
     void delete(LongIdKey key) throws ServiceException;
 
     /**
+     * 从服务中获取所有的过滤器信息。
+     *
+     * @param pagingInfo 分页信息。
+     * @return 指定的数据点对应的过滤器信息。
+     * @throws ServiceException 服务异常。
+     */
+    PagedData<FilterInfo> all(PagingInfo pagingInfo) throws ServiceException;
+
+    /**
      * 从服务中获取指定数据点对应的所有过滤器信息。
      *
      * @param pointKey   指定的数据点对应的主键。
